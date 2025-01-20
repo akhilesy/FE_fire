@@ -1,0 +1,38 @@
+<section class="login-page d-flex justify-content-center align-items-center vh-100" style="background-color: #f5f5f5;">
+    <div class="card shadow p-4" style="max-width: 400px; width: 100%;">
+      <h3 class="text-center mb-4">Login</h3>
+  
+      <!-- Reactive Login Form -->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  
+        <!-- Mobile Number Field -->
+        <mat-form-field class="full-width mb-3" appearance="fill">
+          <mat-label>Mobile Number</mat-label>
+          <input matInput formControlName="mobile" placeholder="Enter your mobile number" type="tel" maxlength="10">
+          <mat-error *ngIf="loginForm.get('mobile')?.hasError('required')">Mobile number is required</mat-error>
+          <mat-error *ngIf="loginForm.get('mobile')?.hasError('pattern')">Enter a valid 10-digit mobile number</mat-error>
+        </mat-form-field>
+  
+        <!-- Password Field -->
+        <mat-form-field class="full-width mb-3" appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" placeholder="Enter your password" type="password">
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is required</mat-error>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">Password must be at least 6 characters</mat-error>
+        </mat-form-field>
+  
+        <!-- Submit Button -->
+        <div class="text-center">
+          <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid" class="w-100">
+            Login
+          </button>
+        </div>
+      </form>
+  
+      <!-- Additional Links -->
+      <div class="text-center mt-3">
+        <a href="#" class="text-secondary">Forgot Password?</a>
+      </div>
+    </div>
+  </section>
+  

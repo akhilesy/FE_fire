@@ -1,0 +1,31 @@
+/* Footer Custom Styles */
+footer {
+    background-color: #343a40; /* Dark background */
+  }
+  
+  footer h5 {
+    color: #ffffff; /* White color for headers */
+    font-weight: bold;
+  }
+  
+  footer p, footer a {
+    color: #f8f9fa; /* Light text color */
+    font-size: 0.9rem;
+  }
+  
+  footer .fa {
+    color: #ffffff; /* Icon color */
+  }
+  
+  footer .fa:hover {
+    color: #00bcd4; /* Hover color for icons */
+  }
+  
+  footer a:hover {
+    color: #00bcd4; /* Hover color for links */
+  }
+  
+  footer .bg-dark {
+    background-color: #212529 !important; /* Dark footer background */
+  }
+  

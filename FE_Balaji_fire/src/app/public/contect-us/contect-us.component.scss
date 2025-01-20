@@ -1,0 +1,25 @@
+.contact-us {
+    background-color: #f8f9fa;
+    padding: 50px 0;
+  
+    mat-card {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+    }
+  
+    .full-width {
+      width: 100%;
+    }
+  
+    mat-form-field {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    button {
+      margin-top: 20px;
+    }
+  }
+  

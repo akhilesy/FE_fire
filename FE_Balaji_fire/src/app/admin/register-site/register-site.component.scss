@@ -1,0 +1,43 @@
+/* site-registration.component.scss */
+
+.container {
+    max-width: fit-content;
+    margin: auto;
+    
+  }
+  
+  .mat-card {
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  button {
+    width: 150px;
+  }
+  
+  button.me-2 {
+    margin-right: 10px;
+  }
+  
+  button.ms-2 {
+    margin-left: 10px;
+  }
+  
+  /* Responsive layout */
+  @media (max-width: 768px) {
+    .mat-form-field {
+      width: 100%;
+    }
+    .container {
+      padding: 0 15px;
+    }
+    button {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  

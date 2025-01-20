@@ -1,0 +1,59 @@
+
+<mat-sidenav-container class="sidenav-container">
+    <!-- Side Menu -->
+    <mat-sidenav #sidenav mode="side" opened class="sidenav">
+    
+      <mat-divider></mat-divider>
+      <mat-nav-list>
+        <!-- Dashboard -->
+        <a mat-list-item routerLink="/admin">
+          <mat-icon>dashboard</mat-icon> Dashboard
+        </a>
+      
+        <!-- Attendance (With Submenu) -->
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-icon class="me-2">event_note</mat-icon>
+            <span>Attendance</span>
+          </mat-expansion-panel-header>
+          <a mat-list-item routerLink="/admin/report-attendance" class="submenu-item">
+            <mat-icon>visibility</mat-icon> Overview
+          </a>
+          <a mat-list-item routerLink="/admin/add-attendance" class="submenu-item">
+            <mat-icon>add</mat-icon> Add
+          </a>
+        </mat-expansion-panel>
+      
+        <!-- Employee (With Submenu) -->
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-icon class="me-2">group</mat-icon>
+            <span>Employee</span>
+          </mat-expansion-panel-header>
+          <a mat-list-item routerLink="/admin/list-employee" class="submenu-item">
+            <mat-icon>list</mat-icon> Employee List
+          </a>
+          <a mat-list-item routerLink="/admin/regemp" class="submenu-item">
+            <mat-icon>person_add</mat-icon> Add Employee
+          </a>
+        </mat-expansion-panel>
+      
+        <!-- Report -->
+        <a mat-list-item routerLink="/reports">
+          <mat-icon>bar_chart</mat-icon> Reports
+        </a>
+      
+        <!-- Settings -->
+        <a mat-list-item routerLink="/settings">
+          <mat-icon>settings</mat-icon> Settings
+        </a>
+      
+        <!-- Add Site -->
+        <a mat-list-item routerLink="/admin/add-site">
+          <mat-icon>location_on</mat-icon> Add Site
+        </a>
+      </mat-nav-list>
+      
+    </mat-sidenav>
+  </mat-sidenav-container>
+  

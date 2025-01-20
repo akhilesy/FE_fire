@@ -1,0 +1,59 @@
+<section class="container mt-5">
+    <mat-card class="shadow-lg">
+      <mat-card-title class="text-center mb-4">
+        <h3 class="fw-bold">Register New Site</h3>
+      </mat-card-title>
+  
+      <form class="p-3" [formGroup]="siteForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <!-- Site Name -->
+          <div class="col-md-6 mb-3">
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Site Name</mat-label>
+              <input matInput formControlName="siteName" placeholder="Enter site name" required />
+              <mat-error *ngIf="siteForm.get('siteName')?.hasError('required')">Site Name is required</mat-error>
+            </mat-form-field>
+          </div>
+  
+          <!-- Work Description -->
+          <div class="col-md-6 mb-3">
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Work Description</mat-label>
+              <textarea matInput formControlName="workDescription" placeholder="Describe the work" rows="3" required></textarea>
+              <mat-error *ngIf="siteForm.get('workDescription')?.hasError('required')">Work Description is required</mat-error>
+            </mat-form-field>
+          </div>
+  
+          <!-- Owner Name -->
+          <div class="col-md-6 mb-3">
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Owner Name</mat-label>
+              <input matInput formControlName="ownerName" placeholder="Enter owner's name" required />
+              <mat-error *ngIf="siteForm.get('ownerName')?.hasError('required')">Owner Name is required</mat-error>
+            </mat-form-field>
+          </div>
+  
+          <!-- Owner Mobile Number -->
+          <div class="col-md-6 mb-3">
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Owner Mobile Number</mat-label>
+              <input matInput formControlName="ownerMobile" type="tel" placeholder="Enter owner's mobile number" required />
+              <mat-error *ngIf="siteForm.get('ownerMobile')?.hasError('required')">Owner Mobile Number is required</mat-error>
+              <mat-error *ngIf="siteForm.get('ownerMobile')?.hasError('pattern')">Invalid phone number format</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+  
+        <!-- Action Buttons (Submit and Clear) -->
+        <div class="d-flex justify-content-center mt-4">
+          <button mat-raised-button color="primary" type="submit" [disabled]="siteForm.invalid" class="me-2">
+            Register Site
+          </button>
+          <button mat-raised-button color="warn" type="button" (click)="clearForm()" class="ms-2">
+            Clear
+          </button>
+        </div>
+      </form>
+    </mat-card>
+  </section>
+  

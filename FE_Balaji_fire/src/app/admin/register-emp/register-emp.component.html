@@ -1,0 +1,96 @@
+<section class="container mt-5">
+  <mat-card class="shadow-lg p-4">
+    <mat-card-title class="text-center mb-4">
+      <h2>Employee Registration</h2>
+    </mat-card-title>
+
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" novalidate>
+      <div class="row">
+        <!-- Full Name -->
+        <div class="col-md-6 mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Full Name</mat-label>
+            <input matInput formControlName="fullName" placeholder="Enter full name" required />
+            <mat-error *ngIf="isFieldInvalid('fullName', 'required')">Full Name is required</mat-error>
+            <mat-error *ngIf="isFieldInvalid('fullName', 'maxlength')">Name cannot exceed 50 characters</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="col-md-6 mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Date of Birth</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="dateOfBirth"
+              placeholder="Select Date of Birth"
+              required
+            />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="isFieldInvalid('dateOfBirth', 'required')">
+              Date of Birth is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        
+        <!-- Phone Number -->
+        <div class="col-md-6 mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Phone Number</mat-label>
+            <input matInput formControlName="phone" placeholder="+1234567890" required />
+            <mat-error *ngIf="isFieldInvalid('phone', 'required')">Phone Number is required</mat-error>
+            <mat-error *ngIf="isFieldInvalid('phone', 'pattern')">Invalid phone number format</mat-error>
+            <mat-error *ngIf="isFieldInvalid('phone', 'maxlength')">Phone number cannot exceed 15 characters</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Email -->
+        <div class="col-md-6 mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="example@mail.com" />
+            <mat-error *ngIf="isFieldInvalid('email', 'email')">Enter a valid email</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Address -->
+        <div class="col-md-12 mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Address</mat-label>
+            <textarea matInput formControlName="address" placeholder="Enter full address" rows="3" required></textarea>
+            <mat-error *ngIf="isFieldInvalid('address', 'required')">Address is required</mat-error>
+            <mat-error *ngIf="isFieldInvalid('address', 'maxlength')">Address cannot exceed 255 characters</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Aadhar Number -->
+        <div class="col-md-6 mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Aadhar Number</mat-label>
+            <input matInput formControlName="aadharNumber" placeholder="123456789012" required />
+            <mat-error *ngIf="isFieldInvalid('aadharNumber', 'required')">Aadhar Number is required</mat-error>
+            <mat-error *ngIf="isFieldInvalid('aadharNumber', 'maxlength')">Aadhar Number must be 12 digits</mat-error>
+            <mat-error *ngIf="isFieldInvalid('aadharNumber', 'pattern')">Aadhar Number must contain exactly 12 digits</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Rate -->
+        <div class="col-md-6 mb-3">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Rate</mat-label>
+            <input matInput type="number" formControlName="rate" placeholder="Enter rate" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center mt-4">
+        <button mat-raised-button color="primary" type="submit" [disabled]="employeeForm.invalid">
+          Register
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</section>

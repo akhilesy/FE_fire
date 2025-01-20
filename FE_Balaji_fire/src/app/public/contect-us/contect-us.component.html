@@ -1,0 +1,75 @@
+<section class="contact-us py-5" style="background-color: #f8f9fa;">
+    <div class="container">
+      <h2 class="text-center mb-5">Contact Us</h2>
+  
+      <div class="row">
+        <!-- Left Section: Image -->
+        <div class="col-md-6 d-flex align-items-center">
+           
+          <img src="assets/homeimage/219.jpg" alt="Contact Us" class="img-fluid rounded" />
+        </div>
+  
+        <!-- Right Section: Form -->
+        <div class="col-md-6">
+          <mat-card class="shadow-lg">
+            <mat-card-header>
+              <mat-card-title>Get in Touch</mat-card-title>
+            </mat-card-header>
+  
+            <mat-card-content>
+              <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                  <div class="col-md-12">
+                    <mat-form-field class="full-width" appearance="fill">
+                      <mat-label>Name</mat-label>
+                      <input matInput formControlName="name" required placeholder="Enter your full name">
+                      <mat-error *ngIf="contactForm.get('name')?.hasError('required')">Name is required</mat-error>
+                    </mat-form-field>
+                  </div>
+  
+                  <div class="col-md-12">
+                    <mat-form-field class="full-width" appearance="fill">
+                      <mat-label>Mobile Number</mat-label>
+                      <input matInput formControlName="mobile" required type="tel" placeholder="Enter your mobile number">
+                      <mat-error *ngIf="contactForm.get('mobile')?.hasError('required')">Mobile number is required</mat-error>
+                      <mat-error *ngIf="contactForm.get('mobile')?.hasError('pattern')">Enter a valid mobile number</mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col-md-12">
+                    <mat-form-field class="full-width" appearance="fill">
+                      <mat-label>Message</mat-label>
+                      <textarea matInput formControlName="message" rows="5" required placeholder="Write your message here"></textarea>
+                      <mat-error *ngIf="contactForm.get('message')?.hasError('required')">Message is required</mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+                <div class="text-center">
+                  <button mat-raised-button color="primary" type="submit" [disabled]="contactForm.invalid">Submit</button>
+                </div>
+              </form>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+<hr>
+       <!-- Contact Details Section -->
+     <div class="contact-details text-center mt-5">
+        <h4>Our Contact Information</h4>
+        <p>
+          Address: 123, Fire Safety Street, Safety City, ABC-123<br>
+          Mobile: +123 456 7890<br>
+          Email: contactbalajifire.com<br>
+          Hours: Monday - Friday, 9:00 AM - 6:00 PM
+        </p>
+      </div>
+  
+    </div>
+
+    
+   
+  </section>
+  

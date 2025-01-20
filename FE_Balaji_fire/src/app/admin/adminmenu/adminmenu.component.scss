@@ -1,0 +1,35 @@
+.sidenav-container {
+    height: 100vh; /* Full viewport height */
+  }
+  
+  .sidenav {
+    width: 240px; /* Fixed width for the side menu */
+    background-color: #f8f9fa; /* Light gray background */
+  }
+  
+  .main-content {
+    background-color: #ffffff; /* White content area */
+    min-height: 100vh;
+  }
+  
+  mat-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  /* Style for Submenu Items */
+.submenu-item {
+    padding-left: 40px; /* Indent submenus */
+    font-size: 14px;
+    color: #555; /* Subtle text color */
+  }
+  
+  mat-expansion-panel {
+    background: #f8f9fa; /* Light background for panels */
+    border: none;
+  }
+  
+  mat-expansion-panel-header {
+    font-weight: bold;
+  }
+  
