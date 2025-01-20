@@ -1,0 +1,29 @@
+/* home.component.css */
+.carousel-item img {
+    height: 500px; /* Adjust height as needed */
+    object-fit: cover; /* Ensure image covers the entire carousel area */
+  }
+
+/* Section Title Styling */
+.welcome-title, .feature-title, .about-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #007bff; /* Primary Color */
+}
+
+/* Add some margin and padding to sections */
+.welcome-section, .feature-section, .about-section {
+  padding: 60px 0;
+}
+
+/* Image Styling */
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+/* Background for the feature section */
+.feature-section {
+  background-color: #f8f9fa;
+}

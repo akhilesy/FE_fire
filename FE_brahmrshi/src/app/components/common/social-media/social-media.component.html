@@ -1,0 +1,29 @@
+<!-- services.component.html -->
+<div class="container mt-5">
+    <h2 class="mainService text-center mb-4">Media</h2>
+
+    <!-- Service Grid -->
+    <div class="row">
+      <!-- Loop through socialMedia array -->
+      <div class="col-md-4 mb-4" *ngFor="let media of socialMedia">
+        <mat-card class="service-card shadow-lg">
+          <!-- Title at the top -->
+          <mat-card-header class="media-header text-center">
+            <mat-card-title class="media-title">{{media.eventName}}</mat-card-title>
+          </mat-card-header>
+
+          <!-- Image in the middle -->
+          <img class="card-img-top rounded mx-auto d-block mt-3" [src]="media.imagePath" alt="Service image">
+
+          <!-- Description at the bottom -->
+          <mat-card-content class="media-content">
+            <p class="media-desc text-center"
+               [matTooltip]="media.eventDesc.length > 33 ? media.eventDesc : ''"
+               matTooltipPosition="above">
+              {{media.eventDesc | slice:0:33}}{{media.eventDesc.length > 33 ? '...' : ''}}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+<div class="container-fluid">
+
+<div class="row bg-warning">
+  <div class="col-md-2 d-flex align-items-center justify-content-center">
+    <div class="favicon">
+      <img style="border-radius: 100%;" (click)="home()" src="assets/hoeimage/final_logo.png" alt="Logo" class="logo img-fluid me-3">
+    </div>
+   
+    
+  </div>
+  
+
+  <div class="col-md-8">
+    <div class="row m-2">
+      <h1 class="header-title mb-0">Brahmrshi Welfare Association</h1>
+    </div>
+    <div class="row">
+
+    
+ 
+    <nav class="navbar navbar-expand-lg navbar-light ">
+      <a mat-button (click)="home()">Home</a>
+      <a mat-button (click)="aboutus()">About Us</a>
+      <a mat-button (click)="services()">Services</a>
+      <a mat-button (click)="contactUs()">Contact</a>
+      <a mat-button (click)="media()">Media</a>
+     
+    </nav>
+  </div>
+  </div>
+  <div class="col-md-2 p-2">
+
+
+  <ng-container *ngIf="isLogin; else loginLink">
+    <mat-menu #profileMenu="matMenu">
+      <button mat-menu-item routerLink="/profile">Profile</button>
+      <button mat-menu-item (click)="logOut()">Logout</button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="profileMenu">
+      <mat-icon>account_circle</mat-icon>
+      Profile
+    </button>
+  </ng-container>
+
+  <ng-template #loginLink>
+    <button mat-button color="accent" (click)="onLogin()">Login</button>
+  </ng-template>
+</div>
+
+
+</div>
+</div>

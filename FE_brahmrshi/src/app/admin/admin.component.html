@@ -1,0 +1,56 @@
+<mat-sidenav-container class="sidenav-container">
+    <!-- Sidebar (Left Side) -->
+    <mat-sidenav mode="side" opened>
+      <mat-nav-list>
+        <!-- Main Menu Items -->
+        <a mat-list-item routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+        <!-- Accordion for Submenus -->
+        <mat-accordion [multi]="false">
+        <!-- Submenu for User Management -->
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>User Management</mat-panel-title>
+          </mat-expansion-panel-header>
+  
+          <!-- Submenu Links -->
+          <a mat-list-item routerLink="/admin/users" routerLinkActive="active">Users</a>
+          <a mat-list-item routerLink="/admin/roles" routerLinkActive="active">Roles</a>
+          <a mat-list-item routerLink="/admin/permissions" routerLinkActive="active">Permissions</a>
+        </mat-expansion-panel>
+
+         <!-- Submenu for User Management -->
+         <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>Member management</mat-panel-title>
+            </mat-expansion-panel-header>
+    
+            <!-- Submenu Links -->
+            <a mat-list-item routerLink="/admin/users" routerLinkActive="active">Users</a>
+            <a mat-list-item routerLink="/admin/roles" routerLinkActive="active">Roles</a>
+            <a mat-list-item routerLink="/admin/permissions" routerLinkActive="active">Permissions</a>
+          </mat-expansion-panel>
+
+           <!-- Submenu for User Management -->
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>work</mat-panel-title>
+            </mat-expansion-panel-header>
+    
+            <!-- Submenu Links -->
+            <a mat-list-item routerLink="/admin/users" routerLinkActive="active">Users</a>
+            <a mat-list-item routerLink="/admin/roles" routerLinkActive="active">Roles</a>
+            <a mat-list-item routerLink="/admin/permissions" routerLinkActive="active">Permissions</a>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <!-- Another Main Menu Item -->
+        <a mat-list-item routerLink="/admin/settings" routerLinkActive="active">Settings</a>
+      </mat-nav-list>
+    </mat-sidenav>
+  
+    <!-- Main Content (Right Side) -->
+    <mat-sidenav-content>
+        <app-admin-dashboard></app-admin-dashboard>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+

@@ -1,0 +1,48 @@
+/* Add some spacing and styling to the card */
+.service-card {
+    border-radius: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+}
+
+/* Align and style the title */
+.media-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #007bff; /* Bootstrap primary color */
+}
+
+/* Style the image */
+.card-img-top {
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Style the description */
+.media-desc {
+    font-size: 1rem;
+    color: #555;
+    padding: 10px;
+}
+
+/* Center content and provide some spacing */
+.media-header {
+    padding: 1rem 0;
+   display:flex;
+   justify-content: space-around;
+}
+
+.media-content {
+    padding-top: 10px;
+}
+
+/* Add shadow and hover effect to the card */
+.shadow-lg {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}

@@ -1,0 +1,24 @@
+.container {
+    max-width: 800px;
+  }
+  
+  .mat-card {
+    border-radius: 12px;
+  }
+  
+  .mat-card-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  h5 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .button-row{
+    display: flex;
+    align-content: center;
+    justify-content: flex-end;
+    
+  }

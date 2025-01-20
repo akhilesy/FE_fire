@@ -1,0 +1,351 @@
+<!-- Spinner Component -->
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+
+<div class="container mt-5">
+    <mat-card>
+      <mat-card-title class="m-2">Registration Form</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                  <!-- Continue with other fields in similar fashion -->
+  <div class="basic">
+
+ 
+                  <div class="row ">
+                    <div class="col-md-5">
+                      <mat-form-field appearance="outline" class="w-100 mb-3">
+                        <mat-label for="firstName">First Name (नाम)</mat-label>
+                        <input matInput id="firstName" formControlName="firstName" aria-label="First Name" required>
+                        <mat-error *ngIf="registerForm.get('firstName')?.hasError('required')">
+                          First name is required
+                        </mat-error>
+                        <mat-error *ngIf="registerForm.get('firstName')?.hasError('pattern')">
+                          Must contain only letters (1-50 characters)
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+          
+                    <!-- Last Name -->
+                    <div class="col-md-5">
+                      <mat-form-field appearance="outline" class="w-100 mb-3">
+                        <mat-label for="lastName">Last Name (उपनाम)</mat-label>
+                        <input matInput id="lastName" formControlName="lastName" aria-label="Last Name" required>
+                        <mat-error *ngIf="registerForm.get('lastName')?.hasError('required')">
+                          Last name is required
+                        </mat-error>
+                        <mat-error *ngIf="registerForm.get('lastName')?.hasError('pattern')">
+                          Must contain only letters (1-50 characters)
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  <!---->
+                  
+                  <div class="row">
+                    <div class="col-md-5">
+                        <mat-form-field appearance="outline" class="w-100 mb-3">
+                            <mat-label for="fatherName">Father Name (पिता का नाम)</mat-label>
+                            <input matInput id="fatherName" formControlName="fatherName" aria-label="Father's Name" required>
+                            <mat-error *ngIf="registerForm.get('fatherName')?.hasError('required')">
+                              Father's name is required
+                            </mat-error>
+                            <mat-error *ngIf="registerForm.get('fatherName')?.hasError('pattern')">
+                              Must contain only letters and spaces (1-100 characters)
+                            </mat-error>
+                          </mat-form-field>
+                    </div>
+          
+                    <!-- Last Name -->
+                    <div class="col-md-5">
+                        <mat-form-field appearance="outline" class="w-100 mb-3">
+                            <mat-label for="emailId">Email ID (ईमेल आईडी)</mat-label>
+                            <input matInput id="emailId" formControlName="emailId" type="email" aria-label="Email ID" required>
+                            <mat-error *ngIf="registerForm.get('emailId')?.hasError('required')">
+                              Email ID is required
+                            </mat-error>
+                            <mat-error *ngIf="registerForm.get('emailId')?.hasError('email')">
+                              Must be a valid email format
+                            </mat-error>
+                          </mat-form-field>
+                    </div>
+                  </div>
+          
+
+                  <div class="row ">
+                    <div class="col-md-5">
+                        <mat-form-field appearance="outline" class="w-100 mb-3">
+                            <mat-label for="mobile">Mobile Number/User Id (आईडी/मोबाइल नंबर)</mat-label>
+                            <input matInput id="mobile" formControlName="mobile" type="tel" aria-label="Mobile Number" required>
+                            <mat-error *ngIf="registerForm.get('mobile')?.hasError('required')">
+                              Mobile number is required
+                            </mat-error>
+                            <mat-error *ngIf="registerForm.get('mobile')?.hasError('pattern')">
+                              Must be exactly 10 digits
+                            </mat-error>
+                          </mat-form-field>
+                    </div>
+          
+                    <!-- Last Name -->
+                    <div class="col-md-5">
+                        
+
+                          <mat-form-field appearance="outline" class="w-100 mb-3">
+                            <mat-label for="country">Country</mat-label>
+                            <input matInput id="country" formControlName="country" aria-label="Country" required>
+                            <mat-error *ngIf="registerForm.get('country')?.hasError('required')">
+                              Country is required
+                            </mat-error>
+                            <mat-error *ngIf="registerForm.get('country')?.hasError('pattern')">
+                              Must contain only letters (1-20 characters)
+                            </mat-error>
+                          </mat-form-field>
+                    </div>
+                  </div>
+
+                </div>
+                   <!-- Country -->
+                    <div class="baseaddress">
+
+                    
+        <div class="row">
+            <div class="col-md-5">
+                <mat-form-field appearance="outline" class="w-100 mb-3">
+                    <mat-label for="address">Birth/Native Town/Village(जन्म/मूल शहर/गांव)</mat-label>
+                    <textarea matInput id="address" formControlName="address" aria-label="Address" required></textarea>
+                    <mat-error *ngIf="registerForm.get('address')?.hasError('required')">
+                      Address is required
+                    </mat-error>
+                    <mat-error *ngIf="registerForm.get('address')?.hasError('maxlength')">
+                      Must be less than 100 characters
+                    </mat-error>
+                  </mat-form-field>
+            </div>
+  
+            <!-- State -->
+            <div class="col-md-5">
+              <mat-form-field appearance="outline" class="w-100 mb-3">
+                <mat-label for="state">State (राज्य)</mat-label>
+                <mat-select id="state" formControlName="state" required (selectionChange)="onStateChange($event.value)">
+                    <mat-option *ngFor="let state of states" [value]="state.stateId">
+                      {{ state.stateName }}
+                    </mat-option>
+                  </mat-select>
+                <mat-error *ngIf="registerForm.get('state')?.hasError('required')">
+                  State is required
+                </mat-error>
+                <mat-error *ngIf="registerForm.get('state')?.hasError('min')">
+                  Must be a positive number
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <!-- District -->
+          <div class="row">
+            <div class="col-md-5">
+              <mat-form-field appearance="outline" class="w-100 mb-3">
+                <mat-label for="district">District (जिला)</mat-label>
+                <mat-select id="district" formControlName="district" required>
+                    <mat-option *ngFor="let district of districts" [value]="district.districtId">
+                      {{ district.districtName }}
+                    </mat-option>
+                  </mat-select>
+                <mat-error *ngIf="registerForm.get('district')?.hasError('required')">
+                  District is required
+                </mat-error>
+                <mat-error *ngIf="registerForm.get('district')?.hasError('min')">
+                  Must be a positive number
+                </mat-error>
+              </mat-form-field>
+            </div>
+  
+            <!-- Block -->
+            <div class="col-md-5">
+              <mat-form-field appearance="outline" class="w-100 mb-3">
+                <mat-label for="block">Block (ब्लॉक)</mat-label>
+                <input matInput id="block" formControlName="block" aria-label="Block" required>
+                <mat-error *ngIf="registerForm.get('block')?.hasError('required')">
+                  Block is required
+                </mat-error>
+                <mat-error *ngIf="registerForm.get('block')?.hasError('pattern')">
+                  Must contain only letters and spaces (1-50 characters)
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+              <mat-checkbox (change)="onAddressCheckboxChange($event)">Current Address is the same as Base Address</mat-checkbox>
+            </div>
+          </div>
+        <div class="currentAddress" *ngIf="!isAddressSame">
+    
+          <div class="row">
+            <div class="col-md-5">
+                <mat-form-field appearance="outline" class="w-100 mb-3">
+                    <mat-label for="currAddress">Current Town/Village( वर्तमान शहर/गांव)</mat-label>
+                    <textarea matInput id="currAddress" formControlName="currAddress" aria-label="Current Address"></textarea>
+                    <mat-error *ngIf="registerForm.get('currAddress')?.hasError('required')">
+                      Current address is required
+                    </mat-error>
+                    <mat-error *ngIf="registerForm.get('currAddress')?.hasError('maxlength')">
+                      Must be less than 100 characters
+                    </mat-error>
+                  </mat-form-field>
+
+            </div>
+            <div class="col-md-5">
+                <mat-form-field appearance="outline" class="w-100 mb-3">
+                    <mat-label for="currState">Current State (वर्तमान राज्य)</mat-label>
+                    
+                    <mat-select id="currState" formControlName="currState" (selectionChange)="onCurrentStateChange($event.value)">
+                        <mat-option *ngFor="let state of states" [value]="state.stateId">
+                          {{ state.stateName }}
+                        </mat-option>
+                      </mat-select>
+
+                    <mat-error *ngIf="registerForm.get('currState')?.hasError('required')">
+                      Current state is required
+                    </mat-error>
+                    <mat-error *ngIf="registerForm.get('currState')?.hasError('min')">
+                      Must be a positive number
+                    </mat-error>
+                  </mat-form-field>
+                
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-5">
+              <mat-form-field appearance="outline" class="w-100 mb-3">
+                <mat-label for="currDistrict">Current District (वर्तमान जिला)</mat-label>
+                <mat-select id="district" formControlName="district">
+                    <mat-option *ngFor="let district of currDistricts" [value]="district.districtId">
+                      {{ district.districtName }}
+                    </mat-option>
+                  </mat-select>
+                <mat-error *ngIf="registerForm.get('currDistrict')?.hasError('required')">
+                  District is required
+                </mat-error>
+                <mat-error *ngIf="registerForm.get('currDistrict')?.hasError('min')">
+                  Must be a positive number
+                </mat-error>
+              </mat-form-field>
+            </div>
+  
+            <!-- Block -->
+            <div class="col-md-5">
+              <mat-form-field appearance="outline" class="w-100 mb-3">
+                <mat-label for="currBlock">Current Block (वर्तमान ब्लॉक)</mat-label>
+                <input matInput id="currBlock" formControlName="currBlock" aria-label="Current Block">
+                <mat-error *ngIf="registerForm.get('currBlock')?.hasError('required')">
+                  Block is required
+                </mat-error>
+                <mat-error *ngIf="registerForm.get('currBlock')?.hasError('pattern')">
+                  Must contain only letters and spaces (1-50 characters)
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+          <div class="row">
+            <div class="col-md-5">
+              <mat-form-field appearance="outline" class="w-100 mb-3">
+                <mat-label for="password1">Password (पासवर्ड)</mat-label>
+                <input matInput id="password1" formControlName="password1" type="password" aria-label="Password" required>
+                <mat-error *ngIf="registerForm.get('password1')?.hasError('required')">
+                  Password is required
+                </mat-error>
+                <mat-error *ngIf="registerForm.get('password1')?.hasError('minlength')">
+                  Password must be at least 6 characters long
+                </mat-error>
+                <mat-error *ngIf="registerForm.get('password1')?.hasError('maxlength')">
+                  Password cannot be more than 20 characters long
+                </mat-error>
+              </mat-form-field>
+            </div>
+          
+            <!-- Password Field 2 -->
+            <div class="col-md-5">
+              <mat-form-field appearance="outline" class="w-100 mb-3">
+                <mat-label for="password2">Confirm Password (पासवर्ड की पुष्टि कीजिये)</mat-label>
+                <input matInput id="password2" formControlName="password2" type="password" aria-label="Confirm Password" required (blur)="validatePassword()">
+                <mat-error *ngIf="registerForm.get('password2')?.hasError('required')">
+                  Confirm password is required
+                </mat-error>
+                <mat-error *ngIf="registerForm.get('password2')?.hasError('minlength')">
+                  Password must be at least 6 characters long
+                </mat-error>
+                <mat-error *ngIf="registerForm.get('password2')?.hasError('maxlength')">
+                  Password cannot be more than 20 characters long
+                </mat-error>
+                <mat-error *ngIf="isSamePassword && registerForm.get('password2')?.touched">
+                    Passwords do not match
+                  </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-5">
+                <mat-form-field appearance="outline" class="w-100 mb-3">
+                    <mat-label for="workingArea">Working Sector (कार्य क्षेत्र)</mat-label>
+                    <input matInput id="workingArea" formControlName="workingArea" aria-label="Working Area" required>
+                    <mat-error *ngIf="registerForm.get('workingArea')?.hasError('required')">
+                      Working area is required
+                    </mat-error>
+                    <mat-error *ngIf="registerForm.get('workingArea')?.hasError('maxlength')">
+                      Working area cannot be more than 100 characters long
+                    </mat-error>
+                  </mat-form-field>
+            </div>
+            <div class="col-md-5">
+                <mat-form-field appearance="outline" class="w-100 mb-3">
+                    <mat-label for="designation">Current Position(वर्तमान पद)</mat-label>
+                    <input matInput id="designation" formControlName="designation" aria-label="Designation" required>
+                    <mat-error *ngIf="registerForm.get('designation')?.hasError('required')">
+                      Designation is required
+                    </mat-error>
+                    <mat-error *ngIf="registerForm.get('designation')?.hasError('pattern')">
+                      Designation can only contain letters and spaces (1-50 characters)
+                    </mat-error>
+                  </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <mat-checkbox (change)="checkTerm($event)">I agree with terms & conditions of Central Brhamarshi Association. (मैं सेंट्रल ब्रम्हर्षि एसोसिएशन के नियमों और शर्तों से सहमत हूं।)</mat-checkbox>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <mat-checkbox (change)="checkAggrement($event)">All the information given above is the true on base of my knowledge,If any information is incorrect and mislead to the site admin then all the responsibility is of mine.Site admin can take necessary action. (ऊपर दी गई सभी जानकारी मेरी जानकारी के आधार पर सत्य है, यदि कोई जानकारी गलत है और साइट एडमिन को गुमराह करती है तो सारी जिम्मेदारी मेरी है, और साइट एडमिन आवश्यक कार्रवाई कर सकता है।)</mat-checkbox>
+            </div>
+          </div>
+
+          <div class="row mt-3 justify-content-center">
+            <div class="col-auto">
+              <button class="btn btn-primary m-2" type="submit" [disabled]="!registerForm.valid || !isTermChecked || !isConditionChecked">
+                Submit
+              </button>
+            </div>
+            <div class="col-auto">
+              <button class="btn btn-warning m-2" type="button" (click)="onClear()">
+                Clear
+              </button>
+            </div>
+          </div>
+          
+
+                 
+         
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

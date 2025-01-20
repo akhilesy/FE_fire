@@ -1,0 +1,27 @@
+.sidenav-container {
+    height: 100%;
+    display: flex;
+  }
+  
+  mat-sidenav {
+    width: 250px;
+    background-color: #fafafa;
+  }
+  
+  mat-sidenav-content {
+    padding: 16px;
+  }
+  
+  a.mat-list-item {
+    text-decoration: none;
+  }
+  
+  .active {
+    font-weight: bold;
+    color: #1976d2; /* Material primary color */
+  }
+  
+  mat-expansion-panel {
+    margin-top: 8px;
+  }
+  
