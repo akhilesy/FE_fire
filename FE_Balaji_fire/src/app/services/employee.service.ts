@@ -18,7 +18,7 @@ createEmployee(userData: any): Observable<any> {
     'Content-Type': 'application/json'
   });
 
-  return this.http.post(this.appUrl+'employee/create', JSON.stringify(userData), { headers });
+  return this.http.post(this.appUrl+'employee/addEmployee', JSON.stringify(userData), { headers });
 }
 
 getEmployees(): Observable<any> {

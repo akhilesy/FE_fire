@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
+import { CommonServicesService } from 'src/app/services/common-services.service';
 
 @Component({
   selector: 'app-register-site',
@@ -10,7 +14,11 @@ export class RegisterSiteComponent {
 
   siteForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder,
+    private spinner: NgxSpinnerService,
+      private toastrService:ToastrService,
+      private route:Router,
+    private commonService: CommonServicesService) {}
 
   ngOnInit(): void {
     this.siteForm = this.fb.group({
@@ -25,10 +33,36 @@ export class RegisterSiteComponent {
   }
 
   onSubmit(): void {
+    this.spinner.show();
     if (this.siteForm.valid) {
-      console.log(this.siteForm.value);
-      // You can now send the form data to your backend to save the site details
+
+      this.commonService.createSite(this.siteForm.value).subscribe({
+        next:(response)=>{
+          debugger
+          console.log('Site Data:', this.siteForm.value);
+          this.toastrService.success("Site  added successfully");
+          this.clearForm();
+          this.route.navigateByUrl('admin/add-site');
+          this.spinner.hide();
+        },
+        error:(error)=>{
+          debugger
+          this.route.navigateByUrl('admin/add-site');
+          this.toastrService.error( error.error);
+      this.spinner.hide();
+
+        },complete: () => {
+          this.spinner.hide(); 
+        }
+      })
+
+    } else {
+      this.toastrService.error("Site Not registed ");
+      this.route.navigateByUrl('/admin/add-site');
+      this.spinner.hide();
+
     }
+    this.spinner.hide();
   }
 
   clearForm(): void {

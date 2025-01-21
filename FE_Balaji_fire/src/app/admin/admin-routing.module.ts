@@ -7,14 +7,16 @@ import { ViewEmployeeComponent } from './view-employee/view-employee.component';
 import { ListEmployeeComponent } from './list-employee/list-employee.component';
 import { AddAttendanceComponent } from './add-attendance/add-attendance.component';
 import { AttendanceReportComponent } from './attendance-report/attendance-report.component';
+import { ListSiteComponent } from './list-site/list-site.component';
 
 const routes: Routes = [{ path: '', component: AdminComponent,children:[
-  { path: 'regemp', component: RegisterEmpComponent },
+  { path: 'reg-emp', component: RegisterEmpComponent },
   { path: 'add-site', component: RegisterSiteComponent },
  { path: 'view-employee', component: ViewEmployeeComponent },
  { path: 'list-employee', component: ListEmployeeComponent },
  { path: 'add-attendance', component: AddAttendanceComponent },
- { path: 'report-attendance', component: AttendanceReportComponent }
+ { path: 'report-attendance', component: AttendanceReportComponent },
+ { path: 'site-list', component: ListSiteComponent }
 ] },
   ];
 

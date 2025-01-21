@@ -33,8 +33,21 @@
           <a mat-list-item routerLink="/admin/list-employee" class="submenu-item">
             <mat-icon>list</mat-icon> Employee List
           </a>
-          <a mat-list-item routerLink="/admin/regemp" class="submenu-item">
+          <a mat-list-item routerLink="/admin/reg-emp" class="submenu-item">
             <mat-icon>person_add</mat-icon> Add Employee
+          </a>
+        </mat-expansion-panel>
+         <!-- Employee (With Submenu) -->
+         <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-icon>location_on</mat-icon>
+            <span>Site</span>
+          </mat-expansion-panel-header>
+          <a mat-list-item routerLink="/admin/site-list" class="submenu-item">
+            <mat-icon>list</mat-icon> Site List
+          </a>
+          <a mat-list-item routerLink="/admin/add-site" class="submenu-item">
+            <mat-icon>location_on</mat-icon> Add Site
           </a>
         </mat-expansion-panel>
       
@@ -49,9 +62,7 @@
         </a>
       
         <!-- Add Site -->
-        <a mat-list-item routerLink="/admin/add-site">
-          <mat-icon>location_on</mat-icon> Add Site
-        </a>
+      
       </mat-nav-list>
       
     </mat-sidenav>

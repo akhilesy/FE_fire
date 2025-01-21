@@ -1,0 +1,64 @@
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+<section class="container mt-4">
+  <mat-card class="shadow-lg">
+    <mat-card-title>
+      <h3 class="fw-bold text-center">Employee List</h3>
+    </mat-card-title>
+    <mat-card-content>
+      <!-- Search Input -->
+       <hr>
+      <div class="d-flex justify-content-end mb-3">
+        <mat-form-field appearance="outline" class="w-30">
+          <mat-label>Search Employees</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Type to search..." />
+        </mat-form-field>
+      </div>
+
+      <!-- Employee Table -->
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-100" matSort>
+
+        <!-- Employee ID Column -->
+        <ng-container matColumnDef="SiteId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <td mat-cell *matCellDef="let site"> {{ site.siteId }} </td>
+        </ng-container>
+    
+        <!-- Employee Name Column -->
+        <ng-container matColumnDef="SiteName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Site name </th>
+          <td mat-cell *matCellDef="let site"> {{ site.siteName }} </td>
+        </ng-container>
+
+        <!-- Employee Phone Column -->
+        <ng-container matColumnDef="Owner">
+          <th mat-header-cell *matHeaderCellDef> Owner name </th>
+          <td mat-cell *matCellDef="let site"> {{ site.ownerName }} </td>
+        </ng-container>
+
+        <!-- Employee Rate Column -->
+        <ng-container matColumnDef="Mobile">
+          <th mat-header-cell *matHeaderCellDef> Mobile </th>
+          <td mat-cell *matCellDef="let site"> {{ site.ownerMobile }} </td>
+        </ng-container>
+
+
+        <!-- Action Buttons Column -->
+        <ng-container matColumnDef="Action">
+          <th mat-header-cell *matHeaderCellDef> Action </th>
+          <td mat-cell *matCellDef="let site">
+            <button mat-button color="primary" (click)="viewDetails(site)">View</button>
+            <button mat-button color="warn" (click)="deleteEmployee(site.siteId)">Delete</button>
+          </td>
+        </ng-container>
+
+        <!-- Table Header & Row Definitions -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <!-- Paginator -->
+      <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" aria-label="Select page">
+      </mat-paginator>
+    </mat-card-content>
+  </mat-card>
+</section>

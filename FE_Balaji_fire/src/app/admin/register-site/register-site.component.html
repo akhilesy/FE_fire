@@ -8,7 +8,7 @@
         <div class="row">
           <!-- Site Name -->
           <div class="col-md-6 mb-3">
-            <mat-form-field appearance="fill" class="w-100">
+            <mat-form-field appearance="outline" class="w-100">
               <mat-label>Site Name</mat-label>
               <input matInput formControlName="siteName" placeholder="Enter site name" required />
               <mat-error *ngIf="siteForm.get('siteName')?.hasError('required')">Site Name is required</mat-error>
@@ -17,7 +17,7 @@
   
           <!-- Work Description -->
           <div class="col-md-6 mb-3">
-            <mat-form-field appearance="fill" class="w-100">
+            <mat-form-field appearance="outline" class="w-100">
               <mat-label>Work Description</mat-label>
               <textarea matInput formControlName="workDescription" placeholder="Describe the work" rows="3" required></textarea>
               <mat-error *ngIf="siteForm.get('workDescription')?.hasError('required')">Work Description is required</mat-error>
@@ -26,7 +26,7 @@
   
           <!-- Owner Name -->
           <div class="col-md-6 mb-3">
-            <mat-form-field appearance="fill" class="w-100">
+            <mat-form-field appearance="outline" class="w-100">
               <mat-label>Owner Name</mat-label>
               <input matInput formControlName="ownerName" placeholder="Enter owner's name" required />
               <mat-error *ngIf="siteForm.get('ownerName')?.hasError('required')">Owner Name is required</mat-error>
@@ -35,7 +35,7 @@
   
           <!-- Owner Mobile Number -->
           <div class="col-md-6 mb-3">
-            <mat-form-field appearance="fill" class="w-100">
+            <mat-form-field appearance="outline" class="w-100">
               <mat-label>Owner Mobile Number</mat-label>
               <input matInput formControlName="ownerMobile" type="tel" placeholder="Enter owner's mobile number" required />
               <mat-error *ngIf="siteForm.get('ownerMobile')?.hasError('required')">Owner Mobile Number is required</mat-error>

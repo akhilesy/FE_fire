@@ -31,6 +31,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { ListSiteComponent } from './list-site/list-site.component';
 
 
 
@@ -43,7 +44,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ViewEmployeeComponent,
     ListEmployeeComponent,
     AddAttendanceComponent,
-    AttendanceReportComponent
+    AttendanceReportComponent,
+    ListSiteComponent
   ],
   imports: [
     CommonModule,

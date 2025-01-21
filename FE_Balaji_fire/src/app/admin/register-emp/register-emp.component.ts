@@ -55,11 +55,11 @@ export class RegisterEmpComponent {
           console.log('Employee Data:', this.employeeForm.value);
           this.toastrService.success("Employee registed successfully");
           this.onClear();
-          this.route.navigateByUrl('admin/regemp');
+          this.route.navigateByUrl('admin/reg-emp');
           this.spinner.hide();
         },
         error:(error)=>{
-          this.route.navigateByUrl('admin/regemp');
+          this.route.navigateByUrl('admin/reg-emp');
           this.toastrService.error( error.error);
       this.spinner.hide();
 
@@ -68,11 +68,6 @@ export class RegisterEmpComponent {
         }
       })
 
-      //setterObject(this.employeeForm);
-      console.log('Employee Data:', this.employeeForm.value);
-      this.toastrService.error("Employee data not correct");
-      this.route.navigateByUrl('/admin/regemp');
-      this.spinner.hide();
     } else {
       this.toastrService.error("Employee Not registed ");
       this.route.navigateByUrl('/admin/regemp');

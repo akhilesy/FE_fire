@@ -1,0 +1,26 @@
+.container {
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .mat-card {
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mat-header-cell, .mat-cell {
+    text-align: left;
+  }
+  
+  .mat-header-cell {
+    font-weight: bold;
+  }
+  
+  button {
+    margin-right: 5px;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
