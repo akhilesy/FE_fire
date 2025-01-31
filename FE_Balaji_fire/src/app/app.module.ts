@@ -21,6 +21,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 import { PublicModule } from "./public/public.module";
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -52,6 +53,7 @@ import { PublicModule } from "./public/public.module";
     MatListModule,
     MatCheckboxModule,
     HttpClientModule,
+    MatNativeDateModule,
     ToastrModule.forRoot({
       timeOut: 10000,
       positionClass: 'toast-bottom-right',

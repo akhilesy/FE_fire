@@ -38,9 +38,9 @@ export class RegisterSiteComponent {
 
       this.commonService.createSite(this.siteForm.value).subscribe({
         next:(response)=>{
-          debugger
+         
           console.log('Site Data:', this.siteForm.value);
-          this.toastrService.success("Site  added successfully");
+          this.toastrService.success("Site added successfully");
           this.clearForm();
           this.route.navigateByUrl('admin/add-site');
           this.spinner.hide();

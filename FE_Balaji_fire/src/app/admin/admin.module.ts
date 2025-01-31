@@ -66,6 +66,7 @@ import { ListSiteComponent } from './list-site/list-site.component';
     MatTableModule,
     MatSelectModule,
     MatCheckboxModule,
+    MatPaginatorModule,
     ToastrModule.forRoot({
       timeOut: 10000,
       positionClass: 'toast-bottom-right',
