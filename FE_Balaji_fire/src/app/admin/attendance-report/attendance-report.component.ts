@@ -22,8 +22,8 @@ export class AttendanceReportComponent implements OnInit {
   minDate = new Date();  // Current date
   maxDate: Date;
 
-  dataSource = new MatTableDataSource<any>();
-  @ViewChild(MatSort) sort!: MatSort;
+  dataSource!:MatTableDataSource<any>;
+ // @ViewChild(MatSort) sort!: MatSort;
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -41,7 +41,7 @@ export class AttendanceReportComponent implements OnInit {
 
     this.formData = this.fb.group({
       atdDate: ['', Validators.required],
-      empId: ['', Validators.required]
+      empId: ['']
     });
   }
 
@@ -85,24 +85,36 @@ export class AttendanceReportComponent implements OnInit {
   }
 
   handleAttendanceResponse(response: any): void {
-    if (response.status === 'FOUND') {
+    if (response.status === 'FOUND' && response.data?.length) {
+      // Sort attendance records by date in ascending order
+    
+
       this.attendanceRecords = response.data;
       this.attendanceRecords.sort((a, b) => {
         const dateA = new Date(a.attandanceDate); // Convert to Date object
         const dateB = new Date(b.attandanceDate); // Convert to Date object
-        return dateA.getTime() - dateB.getTime(); // Compare the dates in ascending order
-      });
-      this.dataSource.data = this.attendanceRecords;
+        return dateA.getTime() - dateB.getTime(); 
+      })
+  
+      // Set dataSource with sorted data
+     // this.attendanceRecords = this.attendanceRecords;
+      this.dataSource = new MatTableDataSource<any>(this.attendanceRecords);
       this.dataSource.paginator = this.paginator;
+     
+  
+      // Success notification
       this.toastrService.success('Attendance details found successfully');
-      this.router.navigateByUrl('admin/report-attendance');
     } else {
+      // Handle no data found scenario
       this.attendanceRecords = [];
-      this.dataSource.data = [];
+      this.dataSource = new MatTableDataSource<any>();
       this.toastrService.warning('No attendance details found');
-      this.router.navigateByUrl('admin/report-attendance');
     }
+  
+    // Navigate to the report attendance page
+    this.router.navigateByUrl('admin/report-attendance');
   }
+  
 
   handleError(error: any): void {
     this.toastrService.error(error.error.message || 'An error occurred');

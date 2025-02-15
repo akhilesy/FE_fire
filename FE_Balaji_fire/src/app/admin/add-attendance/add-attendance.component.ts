@@ -6,6 +6,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { CommonServicesService } from 'src/app/services/common-services.service';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-add-attendance',
@@ -33,7 +34,7 @@ export class AddAttendanceComponent {
   ) {
     this.attendanceForm = this.fb.group({
       siteId: ['', Validators.required],
-      empId: ['', Validators.required],
+      empIds: [[], Validators.required]  ,
       date: ['', Validators.required],
       isPresent: [true],
       otHours: [0, Validators.min(0)]
@@ -47,41 +48,63 @@ export class AddAttendanceComponent {
 
   // Add Attendance to List
   addAttendance(): void {
-   
-    const attendance = {
-      employeeId: this.attendanceForm.value.empId, // Example static value, or you can get it from the form if needed
-      attenDate: this.attendanceForm.value.date,
-      siteCode: this.attendanceForm.value.siteId, // Assuming siteName maps to siteCode
-      isPresent: this.attendanceForm.value.isPresent,
-      otHours: this.attendanceForm.value.otHours
+    const formValues = this.attendanceForm.value;
+debugger
+    
+    const attObjData = formValues.empIds.map((empId: number) => {
+      const selectedDate = new Date(this.attendanceForm.value.date);
+      const localDate = new Date(selectedDate.getTime() - selectedDate.getTimezoneOffset() * 60000)
+                    .toISOString()
+                    .split('T')[0];
+      return { employeeId: empId,               // Dynamically assign employee ID
+      attenDate: localDate,      // Attendance date from the form
+      siteCode: formValues.siteId,     // Site code from the form
+      isPresent: formValues.isPresent, // Present status
+      otHours: formValues.otHours || 0, // Default OT hours to 0 if not provided
     };
-    this.attendanceList.push(attendance);
+  });
+  this.attendanceList.push(...attObjData);
+debugger
     //add list to show attendance list
-    const attendance2 = {
-      employeeName: this.employees.find(emp => emp.empId === this.attendanceForm.value.empId)?.fullName || '',
-      attenDate: this.attendanceForm.value.date,
-      siteName: this.sites.find(site => site.siteId === this.attendanceForm.value.siteId)?.siteName || '',
-      isPresent: this.attendanceForm.value.isPresent,
-      otHours: this.attendanceForm.value.otHours
-    };
-    this.attendanceList2.push(attendance2);
+   // Create attendance objects for each selected employee
+const listData = formValues.empIds.map((empId: number) => {
+  const employee = this.employees.find(emp => emp.empId === empId);
+  const site = this.sites.find(site => site.siteId === formValues.siteId);
+  const selectedDate = new Date(this.attendanceForm.value.date);
+      const localDate = new Date(selectedDate.getTime() - selectedDate.getTimezoneOffset() * 60000)
+                    .toISOString()
+                    .split('T')[0];
+  return {
+    employeeId: empId,                             // Employee ID
+    employeeName: employee?.fullName || '',        // Get employee name
+    attenDate: localDate,                    // Attendance date
+    siteId: formValues.siteId,                     // Site ID
+    siteName: site?.siteName || '',                // Get site name
+    isPresent: formValues.isPresent,               // Present status
+    otHours: formValues.otHours || 0,              // Overtime hours (default 0)
+   
+  };
+});
+
+// Push the generated objects to the attendance list
+this.attendanceList2.push(...listData);
     this.attendanceList2 = [...this.attendanceList2];
    // this.dataSource.data = this.attendanceList2;
     this.resetForm();
   }
 
-  // Reset Form
   resetForm(): void {
-    this.attendanceForm = this.fb.group({
-      siteId: ['', Validators.required],
-      empId: ['', Validators.required],
-      date: ['', Validators.required],
-      isPresent: [true],
-      otHours: [0, Validators.min(0)]
+    this.attendanceForm.reset({
+      siteId: '',                 // Resets the site selection
+      empIds: [],                 // Corrected from empId to empIds for multi-select
+      date: '',                   // Clears the date
+      isPresent: true,            // Default value set to true
+      otHours: 0                  // Resets OT hours to 0
     });
   }
 
   onSubmitAttendance(): void {
+    debugger
     if (this.attendanceList.length > 0) {
       // Logic for handling attendance submission
       console.log('Submitting attendance:', this.attendanceList);
@@ -94,6 +117,7 @@ export class AddAttendanceComponent {
             this.toastrService.success("Attendance submitted successfully ");
             this.attendanceList2= [];
             this.attendanceList= [];
+            this.resetForm();
             this.spinner.hide();
 
           }
@@ -101,7 +125,7 @@ export class AddAttendanceComponent {
       
         error:(error)=>{
           this.router.navigateByUrl('admin/add-attendance');
-          this.toastrService.error( error.error.message);
+          this.toastrService.error( error.message);
           this.spinner.hide();
 
         },complete: () => {
@@ -121,6 +145,9 @@ export class AddAttendanceComponent {
         if (response.status === 'OK') {
          
           this.sites = response.data;
+          this.sites.sort((a, b) => {
+            return a.siteName.localeCompare(b.siteName);
+          });
         this.spinner.hide();
         }
       },
@@ -145,7 +172,9 @@ export class AddAttendanceComponent {
         if (response.status === 'FOUND') {
           
           this.employees = response.data;
-        
+          this.employees.sort((a, b) => {
+            return a.fullName.localeCompare(b.fullName);
+          });
         this.spinner.hide();
         }
       },

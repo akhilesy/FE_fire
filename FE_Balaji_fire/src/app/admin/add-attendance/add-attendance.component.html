@@ -12,7 +12,7 @@
           <form [formGroup]="attendanceForm" (ngSubmit)="addAttendance()">
             <div class="row g-4">
               <!-- Site Name Dropdown -->
-              <div class="col-md-2">
+              <div class="col-md-4">
                 <mat-form-field appearance="fill" class="w-100" floatLabel="always" style="margin: 0;">
                   <mat-label>Site Name</mat-label>
                   <mat-select formControlName="siteId" aria-label="Select site name" required>
@@ -22,25 +22,16 @@
                 </mat-form-field>
               </div>
           
-              <!-- Employee Name Dropdown -->
-              <div class="col-md-3">
-                <mat-form-field appearance="fill" class="w-100" floatLabel="always" style="margin: 0;">
-                  <mat-label>Employee Name</mat-label>
-                  <mat-select formControlName="empId" aria-label="Select employee name" required>
-                    <mat-option *ngFor="let employee of employees" [value]="employee.empId">{{ employee.fullName }}</mat-option>
-                  </mat-select>
-                  
-                </mat-form-field>
-              </div>
-          
+             
               <!-- Date -->
-              <div class="col-md-3">
+              <div class="col-md-4">
                 <mat-form-field appearance="fill" class="w-100" floatLabel="always" style="margin: 0;">
                   <mat-label>Date</mat-label>
                   <input
                     matInput
                     [matDatepicker]="picker"
                     formControlName="date"
+                    [ngModel]="attendanceForm.get('date')?.value | date:'yyyy-MM-dd'" 
                     placeholder="Select date"
                     aria-label="Select attendance date"
                     required
@@ -72,6 +63,21 @@
                 </mat-form-field>
               </div>
             </div>
+
+            <div class="row g-4">
+              <!-- Employee Name Multi-Select Dropdown -->
+              <div class="col-md-4">
+                <mat-form-field appearance="fill" class="w-100" floatLabel="always" style="margin: 0;">
+                  <mat-label>Employee Name</mat-label>
+                  <mat-select formControlName="empIds" multiple aria-label="Select employee name" required>
+                    <mat-option *ngFor="let employee of employees" [value]="employee.empId">
+                      {{ employee.fullName }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            
           
             <!-- Buttons -->
             <div class="text-center mt-3">

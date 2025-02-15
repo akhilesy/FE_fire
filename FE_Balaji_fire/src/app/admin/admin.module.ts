@@ -32,6 +32,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ListSiteComponent } from './list-site/list-site.component';
+import { AttMonthReportComponent } from './att-month-report/att-month-report.component';
 
 
 
@@ -45,7 +46,8 @@ import { ListSiteComponent } from './list-site/list-site.component';
     ListEmployeeComponent,
     AddAttendanceComponent,
     AttendanceReportComponent,
-    ListSiteComponent
+    ListSiteComponent,
+    AttMonthReportComponent
   ],
   imports: [
     CommonModule,

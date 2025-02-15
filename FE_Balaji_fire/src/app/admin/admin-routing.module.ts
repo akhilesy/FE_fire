@@ -8,6 +8,7 @@ import { ListEmployeeComponent } from './list-employee/list-employee.component';
 import { AddAttendanceComponent } from './add-attendance/add-attendance.component';
 import { AttendanceReportComponent } from './attendance-report/attendance-report.component';
 import { ListSiteComponent } from './list-site/list-site.component';
+import { AttMonthReportComponent } from './att-month-report/att-month-report.component';
 
 const routes: Routes = [{ path: '', component: AdminComponent,children:[
   { path: 'reg-emp', component: RegisterEmpComponent },
@@ -16,7 +17,8 @@ const routes: Routes = [{ path: '', component: AdminComponent,children:[
  { path: 'list-employee', component: ListEmployeeComponent },
  { path: 'add-attendance', component: AddAttendanceComponent },
  { path: 'report-attendance', component: AttendanceReportComponent },
- { path: 'site-list', component: ListSiteComponent }
+ { path: 'site-list', component: ListSiteComponent },
+ { path: 'report', component: AttMonthReportComponent }
 ] },
   ];
 
